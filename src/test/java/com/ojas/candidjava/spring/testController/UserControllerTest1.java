@@ -99,25 +99,25 @@ public class UserControllerTest1 {
 		assertEquals(allUser.getStatusCode(), HttpStatus.CONFLICT);
 	}
 
-	/*
-	 * @Test public void testDelete() {
-	 * 
-	 * User user = new User(); user.setId(1); user.setName("ajay");
-	 * user.setCountry("ind"); user.setStatus("ok");
-	 * 
-	 * when(userService.deleteUserById(user.getId())); ResponseEntity<User>
-	 * deleteUser = userController.deleteUser(user.getId());
-	 * assertEquals(deleteUser.getStatusCode(), HttpStatus.NO_CONTENT); }
-	 * 
-	 * @Test public void testDeleteNull() throws Exception {
-	 * 
-	 * User user = new User(); user.setId(1); user.setName("ajay");
-	 * user.setCountry("ind"); user.setStatus("ok");
-	 * 
-	 * when(userService.deleteUserById(user.getId())).thenReturn(null);
-	 * ResponseEntity<User> deleteUser = userController.deleteUser(user.getId());
-	 * assertEquals(deleteUser.getStatusCode(), HttpStatus.NO_CONTENT); }
-	 */
+	
+	  @Test public void testDelete() {
+	  
+	  User user = new User(); user.setId(1); user.setName("ajay");
+	  user.setCountry("ind"); user.setStatus("ok");
+	  
+	  when(userService.deleteUserById(user.getId())); ResponseEntity<User>
+	  deleteUser = userController.deleteUser(user.getId());
+	  assertEquals(deleteUser.getStatusCode(), HttpStatus.NO_CONTENT); }
+	  
+	  @Test public void testDeleteNull() throws Exception {
+	  
+	  User user = new User(); user.setId(1); user.setName("ajay");
+	  user.setCountry("ind"); user.setStatus("ok");
+	  
+	  when(userService.deleteUserById(user.getId())).thenReturn(null);
+	  ResponseEntity<User> deleteUser = userController.deleteUser(user.getId());
+	  assertEquals(deleteUser.getStatusCode(), HttpStatus.NO_CONTENT); }
+	 
 
 	@Test
 	public void testUpdate() {
