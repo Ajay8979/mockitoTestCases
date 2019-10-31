@@ -1,6 +1,7 @@
 package com.ojas.candidjava.spring.testController;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.lang.reflect.Field;
@@ -29,6 +30,7 @@ public class UserControllerTest1 {
 	@Spy
 	User user;
 
+
 	@Before
 	public void init() {
 		userController = new UserController();
@@ -49,11 +51,15 @@ public class UserControllerTest1 {
 
 	@Test
 	public void testCreate() {
+
 		user = new User();
 		user.setId(101);
 		user.setName("raghu");
 		user.setCountry("ind");
 		user.setStatus("ok");
+		// either use above one or use below one
+		// User user = mock(User.class);//creating mock object of User class
+
 		when(userService.createUser(user)).thenReturn(user);
 		ResponseEntity<User> createUser = userController.createUser(user);
 		assertEquals(createUser.getStatusCode(), HttpStatus.OK);
@@ -99,26 +105,26 @@ public class UserControllerTest1 {
 		assertEquals(allUser.getStatusCode(), HttpStatus.CONFLICT);
 	}
 
-	
-	  @Test public void testDelete() {
-	  
-	  User user = new User(); user.setId(1); user.setName("ajay");
-	  user.setCountry("ind"); user.setStatus("ok");
-	  
-	  when(userService.deleteUserById(user.getId())); ResponseEntity<User>
-	  deleteUser = userController.deleteUser(user.getId());
-	  assertEquals(deleteUser.getStatusCode(), HttpStatus.NO_CONTENT); }
-	  
-	  @Test public void testDeleteNull() throws Exception {
-	  
-	  User user = new User(); user.setId(1); user.setName("ajay");
-	  user.setCountry("ind"); user.setStatus("ok");
-	  
-	  when(userService.deleteUserById(user.getId())).thenReturn(null);
-	  ResponseEntity<User> deleteUser = userController.deleteUser(user.getId());
-	  assertEquals(deleteUser.getStatusCode(), HttpStatus.NO_CONTENT); }
-	 
-
+	/*
+	 * @Test public void testDelete() {
+	 * 
+	 * User user = new User(); user.setId(1); user.setName("ajay");
+	 * user.setCountry("ind"); user.setStatus("ok");
+	 * 
+	 * when(userService.deleteUserById(user.getId())); ResponseEntity<User>
+	 * deleteUser = userController.deleteUser(user.getId());
+	 * assertEquals(deleteUser.getStatusCode(), HttpStatus.NO_CONTENT); }
+	 * 
+	 * @Test public void testDeleteNull() throws Exception {
+	 * 
+	 * User user = new User(); user.setId(1); user.setName("ajay");
+	 * user.setCountry("ind"); user.setStatus("ok");
+	 * 
+	 * when(userService.deleteUserById(user.getId())).thenReturn(null);
+	 * ResponseEntity<User> deleteUser = userController.deleteUser(user.getId());
+	 * assertEquals(deleteUser.getStatusCode(), HttpStatus.NO_CONTENT); }
+	 * 
+	 */
 	@Test
 	public void testUpdate() {
 		User user = new User();

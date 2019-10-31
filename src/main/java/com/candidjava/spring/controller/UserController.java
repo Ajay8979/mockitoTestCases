@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.candidjava.spring.Enum.Gender;
 import com.candidjava.spring.bean.Status;
 import com.candidjava.spring.bean.User;
 import com.candidjava.spring.service.UserService;
@@ -51,7 +52,6 @@ public class UserController {
 	public ResponseEntity<User> createUser(@RequestBody User user) {
 		User createUser = userService.createUser(user);
 	//	Status status = new Status();
-
 		if (null != createUser) {
 			//createUser.setStatus("ok");
 			//status.setStatus(createUser.getStatus());
